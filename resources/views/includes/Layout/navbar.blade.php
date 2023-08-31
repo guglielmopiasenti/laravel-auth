@@ -22,7 +22,7 @@
                 @auth
                     <li class="nav-item">
                         <a class="nav-link" @if (request()->routeIs('admin.projects*')) active @endif
-                            href="{{ url('/') }}">Projects</a>
+                            href="{{ route('admin.projects.index') }}">Projects</a>
                     </li>
                 @endauth
             </ul>
