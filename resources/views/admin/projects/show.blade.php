@@ -28,7 +28,7 @@
                     <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-sm btn-warning ms-2">
                         <i class="fa-solid fa-pencil"></i>
                     </a>
-                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="delete-form ">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger ms-2">
@@ -50,4 +50,7 @@
     <div class="d-flex justify-content-center my-5">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary text-center">Go Back</a>
     </div>
+@endsection
+@section('scripts')
+    @vite('resources/js/delete-confirmation.js')
 @endsection
