@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('updated_at', 'DESC')->get();
+        $projects = Project::orderBy('updated_at', 'DESC')->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -36,7 +36,9 @@ class ProjectController extends Controller
         ]);
 
         $project = Project::create($validated);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with('message', 'Project created successfully')
+            ->with('type', 'success');
     }
 
     /**
@@ -63,11 +65,13 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'github_url' => 'required|url',
-            
+
         ]);
 
         $project->update($validated);
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with('message', 'Project updated successfully')
+            ->with('type', 'success');
     }
 
     /**
@@ -76,6 +80,8 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')
+            ->with('message', 'Project deleted successfully')
+            ->with('type', 'success');
     }
 }
