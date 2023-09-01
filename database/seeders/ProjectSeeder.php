@@ -13,7 +13,7 @@ class ProjectSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $project = new Project();
             $project->name = $faker->word();
             $project->github_url = url('https://github.com/'); 
