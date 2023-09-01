@@ -10,4 +10,13 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'technologies',
+        'screenshot_path',
+        'is_featured',
+        'github_url',
+    ];
 }
